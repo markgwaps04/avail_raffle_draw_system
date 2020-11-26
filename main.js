@@ -12,10 +12,15 @@ const dialog = electron.dialog;
 
 const path = require("path");
 const url = require("url");
+const models = require("./static/scripts/models.js");
 
 require('./main2.js');
 
 let win;
+
+const log = require('electron-log');
+log.transports.file.level = 'info';
+log.transports.file.file = app.getAppPath() + 'log.log';
 
 var database = require('knex')({
     client: 'sqlite3',
@@ -25,6 +30,8 @@ var database = require('knex')({
     useNullAsDefault: true,
     connectTimeout: 90000
 });
+
+
 
 function createWindow()
 {

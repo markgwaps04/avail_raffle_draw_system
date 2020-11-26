@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5e7bbaae-57f9-4d37-85b9-974b4136bb0c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/scripts/dialogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/dialogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/scripts/draw1.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/draw1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +46,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/static/scripts/models.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/controller/helper.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/static/scripts/home.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/static/scripts/dialogs.js" root0="SKIP_INSPECTION" />
@@ -82,12 +103,23 @@
       <workItem from="1606151439634" duration="15194000" />
       <workItem from="1606307418292" duration="10778000" />
       <workItem from="1606398251885" duration="12502000" />
-      <workItem from="1606420336405" duration="276000" />
+      <workItem from="1606420336405" duration="4899000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605371290710">
