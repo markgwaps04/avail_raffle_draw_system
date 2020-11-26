@@ -42,17 +42,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\eadmin" />
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\view\home" />
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\view" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem" />
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\sounds" />
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\fonts" />
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\images" />
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\plugins\particles" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\eadmin" />
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\view\home" />
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\view" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

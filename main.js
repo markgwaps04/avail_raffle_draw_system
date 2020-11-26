@@ -13,8 +13,6 @@ const dialog = electron.dialog;
 const path = require("path");
 const url = require("url");
 
-const hbs = require('electron-handlebars')
-
 require('./main2.js');
 
 let win;
