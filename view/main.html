@@ -1,0 +1,387 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVAIL Raffle Draw</title>
+    <link type="text/css" href="../static/eadmin/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="../static/eadmin/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="../static/eadmin/theme.css" rel="stylesheet">
+    <link type="text/css" href="../static/eadmin/custom.css" rel="stylesheet">
+<!--    <link type="text/css" href="../static/eadmin/images/icons/css/font-awesome.css" rel="stylesheet">-->
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+          rel='stylesheet'>
+</head>
+
+
+
+<link type="text/css" href="../static/eadmin/main_ui.css" rel="stylesheet">
+
+<style>
+    .main_container
+    {
+        width: 100%;
+        /* Firefox */
+        display: -moz-box;
+        -moz-box-pack: center;
+        -moz-box-align: center;
+        /* Safari and Chrome */
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        /* W3C */
+        display: box;
+        box-pack: center;
+        box-align: center;
+    }
+
+    .module-login { margin-top:0 }
+
+    .wrapper {
+        border-bottom: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .footer
+    {
+        width: 100%;
+        bottom: 0;
+        height: 123px;
+        border-top: 1px solid #bbb;
+        position : absolute;
+    }
+    body
+    {
+        overflow : hidden;
+    }
+
+    .login-title
+    {
+        font-family: Oswald, fantasy !important;
+        white-space: normal;
+    }
+
+    @media only screen and (max-width: 900px)
+    {
+
+        .content-ui {
+            position:relative;
+        }
+
+        body {
+            overflow-y : scroll;
+        }
+        .footer
+        {
+            position : relative;
+        }
+
+
+    }
+
+
+
+    @media only screen and (max-width: 550px)
+    {
+
+        .login-title.second
+        {
+            font-size:30px !important;
+        }
+
+
+    }
+
+
+    @media only screen and (min-width: 1400px)
+    {
+
+        .area__virus:nth-child(5) {
+            opacity: 0.1;
+            width: 284px;
+        }
+        .area__virus:nth-child(4)
+        {
+            display:none;
+
+        }
+
+    }
+
+
+
+
+
+
+</style>
+
+
+
+
+<style>
+
+    .center {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    input[type='file']
+    {
+        height: 44px;
+    }
+
+    .bg-green, .bg-success
+    {
+        background-color : #3ac47d !important;
+    }
+
+    .bg-success { color : #fff }
+
+    .module-head:not(.cus)
+    {
+        padding: 22px 15px
+    }
+    .module-head h3
+    {
+        font-size: 22px;
+        display : inline-block;
+    }
+
+    .right-action { float:right }
+
+    .control-label, .controls input { font-size: 16px }
+
+    .docs-example:after { display:none }
+
+    .docs-example {
+        padding: 19px 19px 14px;
+        margin-bottom : 18px;
+    }
+
+    select
+    {
+        color : #777 !important;
+        font-size: 16px;
+    }
+
+    select option:not([disabled])
+    {
+        color : black !important;
+        font-size: 18px;
+    }
+
+    @media only screen and (max-width: 995px) {
+        .hide_mobile {
+            display: none;
+        }
+    }
+
+
+    .fullscreen .module-body
+    {
+        height: 629px;
+        overflow-y: scroll;
+    }
+
+    .module-login input
+    {
+        height: 40px
+    }
+
+    .nav_action.nav>li>a
+    {
+        text-decoration: none;
+        text-shadow: none;
+        font-weight: 900;
+        color: black;
+    }
+    .brand
+    {
+        padding: 0px !important;
+    }
+
+
+
+
+</style>
+
+
+
+
+
+<!-- partial:index.partial.html -->
+<svg id="tree" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0" y="0" viewBox="-1694.2 483.2 199.3 285.2" xml:space="preserve">
+  <style type="text/css">
+
+	.st0{fill:#332C28;}
+    .st1{fill:#00513E;}
+    .st2{fill:#003828;}
+    .st3{fill:#386FB1;}
+    .st4{fill:#28527C;}
+    .st5{fill:#EA385C;}
+    .st6{fill:#E7B75C;}
+    .st7{fill:#B28947;}
+
+  </style>
+    <g id="tree">
+    <rect x="-1605.6" y="697.1" class="st0" width="21.7" height="71.3"/>
+        <polygon class="st1" points="-1656.1 616.8 -1634.8 612 -1670.6 676.1 -1648.5 671.1 -1694.2 753 -1595 730.5 -1595 507.4 "/>
+        <polygon class="st2" points="-1494.9 753 -1540.6 671.1 -1518.5 676.1 -1554.4 612 -1533.1 616.8 -1594.7 506.8 -1595 507.4 -1595 730.5 -1594.7 730.4 "/>
+  </g>
+    <g id="lights">
+    <g id="blue-lt">
+      <circle class="blue-lt g1" cx="-1575" cy="706.1" r="9"/>
+        <circle class="blue-lt g2" cx="-1621.3" cy="641" r="7"/>
+        <circle class="blue-lt g3" cx="-1665.5" cy="732.8" r="7"/>
+        <circle class="blue-lt g1" cx="-1600.3" cy="668.5" r="7"/>
+    </g>
+        <g id="blue-dk">
+      <circle class="blue-dk g3" cx="-1578.3" cy="570.8" r="7"/>
+            <circle class="blue-dk g1" cx="-1538" cy="718.6" r="7"/>
+            <circle class="blue-dk g2" cx="-1594.8" cy="610.3" r="7"/>
+    </g>
+        <g id="red">
+      <circle class="red g1" cx="-1635.6" cy="681.7" r="9"/>
+            <circle class="red g1" cx="-1570.3" cy="634" r="9"/>
+            <circle class="red g2" cx="-1607.3" cy="711.6" r="7"/>
+    </g>
+        <g id="gold-lt">
+      <circle class="gold-lt g1" cx="-1612.3" cy="585.8" r="9"/>
+            <circle class="gold-lt g2" cx="-1631.6" cy="705.6" r="7"/>
+    </g>
+        <g id="gold-dk">
+      <circle class="gold-dk g2" cx="-1572.3" cy="604.7" r="7"/>
+            <circle class="gold-dk g3" cx="-1561.3" cy="681.7" r="7"/>
+    </g>
+  </g>
+    <polygon class="st6" points="-1600.5 499.9 -1618.1 499.9 -1603.8 510.3 -1609.3 527 -1595 516.7 -1595 483.2 "/>
+    <polygon class="st7" points="-1572 499.9 -1589.6 499.9 -1595 483.2 -1595 516.7 -1580.8 527 -1586.2 510.3 "/>
+</svg>
+<!-- partial -->
+
+
+
+
+<body>
+
+
+<div class="content-ui">
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner bg-green">
+            <div class="container">
+
+                <a class="brand" href="/">
+                    <img src="../static/images/avail_logo.png" style="width: 70px;height: 70px"/>
+                </a>
+
+            </div>
+        </div><!-- /navbar-inner -->
+    </div>
+
+    <div class="wrapper">
+
+        <div class="container">
+
+            <div class="row">
+
+
+
+                <div class="span9 center main_container">
+                    <div class="content">
+
+
+
+                        <div class="module span6 bg-transparent side-left-login no-border">
+                            <div class="module-body">
+
+                                <p class="login-title first" style="FONT-SIZE: 38px;font-family: fantasy;color:black">DOUBLE-UP CHRISTMAS BONANZA</p>
+                                <p class="login-title second" style="FONT-SIZE: 45px;
+    font-family: fantasy;
+    color: #c43a3a;
+    LINE-HEIGHT: 1.2;">LUCKY DRAW</p>
+
+                            </div>
+                        </div>
+
+                        <div class="module module-login span4 fullscreen-container">
+                            <form class="form-vertical" action="/login/request" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="g8C5S0N4sdPvbR77Auuo3rKeflNcyeb9tOKbUjp3vyfpBHLOkgNrgQtiLbidMJDL">
+                                <div class="module-head bg-success">
+                                    <h3>Sign In</h3>
+                                </div>
+                                <div class="module-body">
+
+
+
+
+                                    <div class="control-group">
+                                        <div class="controls row-fluid">
+                                            <input class="span12" type="text" required name="username"
+                                                   placeholder="Email or Username">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="controls row-fluid">
+                                            <input class="span12" type="password" required name="password" placeholder="Password">
+                                        </div>
+                                    </div>
+
+                                    <hr/>
+
+                                    <p class="text-center">
+                                        <b>
+                                            Dont have an account ? <a href="/register/kobo/user">Request for account</a>
+                                        </b>
+                                    </p>
+
+                                    <p class="text-center"></p>
+
+                                </div>
+                                <div class="module-foot">
+                                    <div class="control-group">
+                                        <div class="controls clearfix">
+                                            <button type="submit" class="btn btn-primary pull-right btn-large">Login</button>
+                                            <a href="#">Forgot Password?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                    </div><!--/.content-->
+                </div><!--/.span9-->
+            </div>
+        </div><!--/.container-->
+    </div><!--/.wrapper-->
+
+    <div class="footer">
+        <div class="container">
+            <b class="copyright">&copy; 2020 Covid Tracing System </b> All rights reserved.
+        </div>
+    </div>
+
+</div>
+
+<script src="../static/eadmin/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../static/eadmin/jquery.cookie.min.js"></script>
+<script src="../static/eadmin/bootstrap.min.js" type="text/javascript"></script>
+<script src="../static/eadmin/parsley.js"></script>
+<script src="../static/eadmin/parsely_validation_plugin.js"></script>
+
+
+
+<script src="../static/eadmin/index.js" type="text/javascript"></script>
+
+
+
+</body>

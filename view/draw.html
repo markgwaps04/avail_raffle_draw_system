@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LUCKY DRAW</title>
+    <link rel="stylesheet" href="../static/eadmin/starbust.css">
+    <link rel="stylesheet" href="../static/eadmin/style.css">
+    <link rel="stylesheet" href="../static/plugins/vex-js/css/vex.css">
+    <link rel="stylesheet" href="../static/plugins/vex-js/css/vex-theme-os.css">
+</head>
+
+<style>
+    .client_name
+    {
+        z-index: 0;
+        color: white;
+        font-size: 60px;
+        font-family: 'Luckiest Guy';
+        margin: 20px 100px;
+        letter-spacing: 6px;
+        -webkit-text-stroke: 2px #b400ff;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    .ready
+    {
+        z-index: 0;
+        color: white;
+        font-size: 70px;
+        font-family: 'Luckiest Guy';
+        margin: 20px 100px;
+        letter-spacing: 6px;
+        -webkit-text-stroke: 2px #b400ff;
+        text-align: center;
+        text-transform: capitalize;
+        word-break: break-word;
+    }
+
+    #container-draw
+    {
+        width: 100%;
+        height: 600px;
+        /* background-color: blue; */
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+        overflow: auto;
+        padding-top: 128px;
+    }
+    .ticket
+    {
+        font-size: 38px;
+        -webkit-text-stroke: 2px #7a14a5;
+        TEXT-ALIGN: center;
+        margin: 19px 170px;
+        letter-spacing: 6px;
+        font-family: 'Luckiest Guy';
+    }
+
+
+    .color {
+        display: block;
+        width: 0;
+        height: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        transition: 0.8s ease;
+        border-radius: 50%;
+        background-color: transparent;
+    }
+
+    .expanded {
+        width: 200%;
+        padding-bottom: 200%;
+        height: auto;
+    }
+
+    .color--blue {
+        background-color: #1b8bf9;
+        transition-delay: 0.25s;
+    }
+
+    .color--orange {
+        background-color: #FF6C19;
+        transition-delay: 0.5s;
+    }
+
+    .color--green {
+        background-color: #41FF9F;
+        transition-delay: 0.75s;
+    }
+
+    .color--purple {
+        background: radial-gradient(circle farthest-side, rgb(165, 102, 172), rgb(130, 83, 163));
+        transition-delay: 1s;
+    }
+
+    body{
+        overflow: hidden;
+        /*background-image : url("../static/images/bg2.jpg");*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: cover;*/
+        /*background-origin: padding-box;*/
+    }
+    .avail_logo img
+    {
+        z-index: 99;
+    }
+
+    .hide
+    {
+        display: none;
+    }
+
+
+
+    #container-winner
+    {
+        background: white;
+        width: 100%;
+        height: 100%;
+        /* background-color: blue; */
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+        overflow: auto;
+        background-image : url("../static/images/bg2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-origin: padding-box;
+        font-family: "Oswald";
+    }
+
+    .wrapper
+    {
+        width: 104vh;
+        height: auto;
+        /* background-color: blue; */
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 261px;
+        bottom: 0;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100%;
+        overflow: auto;
+        text-align: center;
+        text-transform: capitalize;
+    }
+
+    .wrapper .title
+    {
+        color: #903500;
+        letter-spacing: 2px;
+        font-size: 52px;
+        margin: 0;
+    }
+
+    .wrapper .ticket_winner
+    {
+        margin: 0;
+        color: #903500;
+        font-size: 35px;
+    }
+
+    .wrapper .footer
+    {
+        position: absolute;
+        bottom: 0;
+        padding: 26px;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .wrapper .footer .from_company
+    {
+        color: #903500;
+        text-align: center;
+    }
+
+    .wrapper .footer .from_company img
+    {
+        width: 136px;
+    }
+
+
+
+</style>
+
+<body class="draw">
+
+
+
+<div class="avail_logo">
+    <img src="../static/images/avail_logo.png">
+</div>
+
+
+<!--<div class="play_gift">-->
+<!--    <img src="../static/images/play_gift.png">-->
+<!--</div>-->
+
+
+<ul class="starbust-wheel">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+<div id="container-draw" class="">
+
+    <p class="ready">
+        Ready...
+    </p>
+
+    <div class="draw" style="display: none">
+        <p class="client_name"></p>
+        <p class="ticket">Ticket No. <span id="ticket_no"></span></p>
+    </div>
+
+
+</div>
+
+<div id="container-winner" class="hide">
+
+    <div class="wrapper">
+
+        <h3 class="title"></h3>
+        <h5 class="ticket_winner">TICKET NO. <label></label></h5>
+
+        <div class="footer">
+
+            <h5 class="from_company">From <img src="../static/images/avail_logo2.png"/> </h5>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<span class="overlay color color--blue" data-value="1"></span>
+<span class="overlay color color--orange" data-value="1"></span>
+<span class="overlay color color--green" data-value="1"></span>
+<div class="overlay color color--purple last" data-value="1">
+</div>
+
+
+
+<script>
+    require("../static/plugins/jquery.js")
+    require("../static/scripts/dialogs.js")
+    // require("../static/plugins/konva/konva.js");
+    // require("../static/scripts/wheel_of_fortune.js");
+    require("../static/scripts/draw1.js");
+
+</script>
+
+
+</body>
+</html>
