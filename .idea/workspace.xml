@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e7bbaae-57f9-4d37-85b9-974b4136bb0c" name="Default Changelist" comment="" />
+    <list default="true" id="5e7bbaae-57f9-4d37-85b9-974b4136bb0c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/db.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/dialogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/dialogs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/draw1.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/draw1.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +21,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/controller/helper.js" root0="SKIP_INSPECTION" />
@@ -74,6 +82,7 @@
       <workItem from="1606151439634" duration="15194000" />
       <workItem from="1606307418292" duration="10778000" />
       <workItem from="1606398251885" duration="12502000" />
+      <workItem from="1606420336405" duration="276000" />
     </task>
     <servers />
   </component>

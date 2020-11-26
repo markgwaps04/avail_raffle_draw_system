@@ -4,6 +4,7 @@ const electron = require("electron");
 const sweetAlert = require('sweetalert2');
 const fs = require("fs");
 const ipc = electron.ipcRenderer;
+const remote = electron.remote;
 const of_dialog = electron.remote.dialog;
 const lodash = require("lodash");
 const app = electron.remote.app;
@@ -17,7 +18,7 @@ vex.defaultOptions.className = 'vex-theme-os';
 var database = require('knex')({
     client: 'sqlite3',
     connection: {
-        filename: app.getAppPath() + "/db.db"
+        filename: remote.process.cwd() + "/db.db"
     },
     useNullAsDefault: true,
     connectTimeout: 90000
