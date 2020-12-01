@@ -22,8 +22,6 @@ exports.home = function(browser_window) {
         slashes : true
     }));
 
-    browser_window.maximize();
-
     browser_window.on('closed', () => {
         browser_window = null;
     });
@@ -105,6 +103,10 @@ exports.home = function(browser_window) {
                     label : "Play and Draw",
                     click : () => exports.playground(browser_window)
                 },
+                {
+                    label : "List of Winners",
+                    click : () => exports.winners(browser_window)
+                },
             ]
         },
         {
@@ -123,7 +125,7 @@ exports.home = function(browser_window) {
     const menu_template = menu.buildFromTemplate(template);
     menu.setApplicationMenu(menu_template);
 
-    browser_window.webContents.openDevTools();
+    // browser_window.webContents.openDevTools();
 
     return browser_window;
 
@@ -152,8 +154,19 @@ exports.import_loading_screen = function (browser_window) {
 
 exports.playground = function (browser_window) {
 
+    data = {"age": 12, "healthy": true}
     browser_window.loadURL(url.format({
         pathname: path.join(app.getAppPath(), 'view/draw.html'),
+        protocol : 'file',
+        slashes : true
+    }));
+
+}
+
+exports.winners = function (browser_window)
+{
+    browser_window.loadURL(url.format({
+        pathname: path.join(app.getAppPath(), 'view/winners.html'),
         protocol : 'file',
         slashes : true
     }));
@@ -161,4 +174,5 @@ exports.playground = function (browser_window) {
     browser_window.on('closed', () => {
         browser_window = null;
     });
+
 }

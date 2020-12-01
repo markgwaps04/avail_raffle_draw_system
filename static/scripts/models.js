@@ -1,11 +1,12 @@
 const electron = require("electron");
 const app = electron.app;
+const process = require("process");
 
 
 exports.database = require('knex')({
     client: 'sqlite3',
     connection: {
-        filename: app.getAppPath() + "/db.db"
+        filename: process.cwd() + "/db.db"
     },
     useNullAsDefault: true,
     connectTimeout: 90000

@@ -2,16 +2,15 @@ const jQuery = require("jquery");
 const electron = require("electron").remote;
 const app = electron.app;
 const lodash = require("lodash");
+const process = require("process");
 const confetti = require("canvas-confetti");
 const sweetAlert = require('sweetalert2');
 
 
-console.log(electron.process.cwd());
-
 var database = require('knex')({
     client: 'sqlite3',
     connection: {
-        filename: electron.process.cwd() + "/db.db"
+        filename: process.cwd() + "/db.db"
     },
     useNullAsDefault: true,
     connectTimeout: 90000
@@ -130,10 +129,8 @@ jQuery('document').ready(function() {
                     jQuery(".ready").hide();
                     jQuery(".draw").show();
 
-                    var audio = new Audio(electron.process.cwd() + '/static/sounds/draw.mp3');
+                    var audio = new Audio( '../static/sounds/draw.mp3');
                     audio.play();
-
-
 
                     const pick_one = result[0];
                     jQuery(".client_name").text(pick_one.name)
@@ -208,7 +205,7 @@ jQuery('document').ready(function() {
 
                                     setTimeout(function () {
 
-                                        var audio = new Audio(electron.process.cwd() + '/static/sounds/winner.mp3');
+                                        var audio = new Audio( '../static/sounds/winner.mp3');
                                         audio.play();
 
                                         jQuery("#container-winner")

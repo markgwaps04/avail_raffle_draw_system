@@ -1,6 +1,6 @@
 {
   "name": "Raffle_Draw_System",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "author": "marklibres345@gmail.com",
   "description": "AVAIL BEAUTY PHILIPPINES CO. INC",
   "dependencies": {
@@ -27,6 +27,18 @@
     "release": "build",
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
+  },
+  "build" : {
+    "win": {
+      "asar": false,
+      "target": "nsis",
+      "icon": "static/images/raffle_draw.ico"
+    },
+    "nsis": {
+      "installerIcon": "static/images/raffle_draw.ico",
+      "installerHeaderIcon": "static/images/raffle_draw.ico",
+      "deleteAppDataOnUninstall": true
+    }
   },
   "devDependencies": {
     "electron": "^10.1.5",

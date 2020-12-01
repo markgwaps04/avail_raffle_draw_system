@@ -20,12 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e7bbaae-57f9-4d37-85b9-974b4136bb0c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/bg2-rev.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/helper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/bg2 - Copy (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/bg2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/bg2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/dialogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/dialogs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/draw1.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/draw1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/models.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/models.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +40,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -52,6 +56,7 @@
     <setting file="file://$PROJECT_DIR$/static/scripts/dialogs.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/static/scripts/draw.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/main.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/static/scripts/winners.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/static/scripts/draw1.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1jvTPBeAdYUzNSvMWFjWAElJ0CK" />
@@ -64,24 +69,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/plugins" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem" />
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\sounds" />
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\fonts" />
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\images" />
-      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\plugins\particles" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\eadmin" />
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\view\home" />
       <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\view" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\plugins" />
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem" />
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\sounds" />
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\fonts" />
+      <recent name="C:\Users\WebDev\WebstormProjects\RafflDrawSystem\static\images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -103,7 +108,8 @@
       <workItem from="1606151439634" duration="15194000" />
       <workItem from="1606307418292" duration="10778000" />
       <workItem from="1606398251885" duration="12502000" />
-      <workItem from="1606420336405" duration="4899000" />
+      <workItem from="1606420336405" duration="6269000" />
+      <workItem from="1606428127334" duration="29598000" />
     </task>
     <servers />
   </component>
@@ -120,16 +126,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605371290710">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="452" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1605371290710" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1606414380628">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1606760978735">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606414380628" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606760978735" />
     <state x="288" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606313733484">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -138,13 +145,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="0" width="585" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1606313747522" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1606317216418">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1606707242465">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1606317216418" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605989059500">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1606707242465" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606707097653">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605989059500" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606707097653" />
   </component>
 </project>

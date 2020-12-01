@@ -1,5 +1,3 @@
-
-
 const electron = require("electron");
 const sweetAlert = require('sweetalert2');
 const fs = require("fs");
@@ -23,7 +21,6 @@ var database = require('knex')({
     useNullAsDefault: true,
     connectTimeout: 90000
 });
-
 
 
 ipc.on("success-dialog", function (event, args) {
