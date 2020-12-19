@@ -3,13 +3,13 @@
     font-family: 'Luckiest Guy';
     font-style: normal;
     font-weight: 400;
-    src: url('../static/fonts/luckiest/luckiest-guy-v11-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/luckiest/luckiest-guy-v11-latin-regular.eot'); /* IE9 Compat Modes */
     src: local('Luckiest Guy Regular'), local('LuckiestGuy-Regular'),
-    url('../static/fonts/luckiest/luckiest-guy-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../static/fonts/luckiest/luckiest-guy-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../static/fonts/luckiest/luckiest-guy-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
-    url('../static/fonts/luckiest/luckiest-guy-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../static/fonts/luckiest/luckiest-guy-v11-latin-regular.svg#LuckiestGuy') format('svg'); /* Legacy iOS */
+    url('../fonts/luckiest/luckiest-guy-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/luckiest/luckiest-guy-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/luckiest/luckiest-guy-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/luckiest/luckiest-guy-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/luckiest/luckiest-guy-v11-latin-regular.svg#LuckiestGuy') format('svg'); /* Legacy iOS */
 }
 
 /* lato-regular - latin */
@@ -17,13 +17,13 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    src: url('../static/fonts/lato/lato-v17-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/lato/lato-v17-latin-regular.eot'); /* IE9 Compat Modes */
     src: local('Lato Regular'), local('Lato-Regular'),
-    url('../static/fonts/lato/lato-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../static/fonts/lato/lato-v17-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../static/fonts/lato/lato-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
-    url('../static/fonts/lato/lato-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../static/fonts/lato/lato-v17-latin-regular.svg#Lato') format('svg'); /* Legacy iOS */
+    url('../fonts/lato/lato-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/lato/lato-v17-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/lato/lato-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/lato/lato-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/lato/lato-v17-latin-regular.svg#Lato') format('svg'); /* Legacy iOS */
 }
 
 
@@ -66,9 +66,13 @@
 }
 
 body {
-    background: radial-gradient(circle farthest-side, rgb(165, 102, 172), rgb(130, 83, 163));
+    background: radial-gradient(circle farthest-side, rgb(165, 102, 172), rgb(130, 83, 163)); 
     color: white;
     font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+    /**background-image : url("../images/bg22.jpg");
+    background-size: cover;
+    background-repeat:no-repeat; **/
+
 }
 body .raffle_theme_wrapper {
     width: 35%;

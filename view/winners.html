@@ -1,11 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>LUCKY DRAW</title>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/plugins/photon.min.css">
     <link rel="stylesheet" href="../static/plugins/vex-js/css/vex.css">
     <link rel="stylesheet" href="../static/plugins/vex-js/css/vex-theme-os.css">
+    <link rel="stylesheet" href="../static/plugins/viewer/viewer.css">
 </head>
 
 <style>
@@ -17,34 +19,37 @@
 
 <body>
 
-<header class="toolbar toolbar-header">
-    <h1 class="title">LIST OF WINNERS</h1>
-</header>
+    <header class="toolbar toolbar-header">
+        <h1 class="title">LIST OF WINNERS</h1>
+    </header>
 
-<table class="table-striped" style="font-size: 17px">
-    <thead>
-    <tr>
-        <th style="width: 30%"><b>Name</b></th>
-        <th style="width: 20%"><b>Ticket</b></th>
-        <th style="width: 20%"><b>Agent Code</b></th>
-        <th style="width: 20%"><b>Bonus Type</b></th>
-        <th style="width: 10%"><b>Action</b></th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+    <table class="table-striped" style="font-size: 17px">
+        <thead>
+            <tr>
+                <th style="width: 30%"><b>Name</b></th>
+                <th style="width: 20%"><b>Ticket</b></th>
+                <th style="width: 20%"><b>Agent Code</b></th>
+                <th style="width: 20%"><b>Prize</b></th>
+                <th style="width: 10%"><b>Action</b></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
-<footer class="toolbar toolbar-footer">
-    <div class="toolbar-actions">
-        <form id="remove_all">
-            <button class="btn btn-primary pull-right btn-large">
-                Remove all
+    <footer class="toolbar toolbar-footer">
+        <div class="toolbar-actions">
+            <button id="slideshow" class="btn btn-default active btn-large">
+                Slideshow
             </button>
-        </form>
-    </div>
-</footer>
-
-<script src="../static/scripts/winners.js"></script>
+            <form id="remove_all" style="display:inline">
+                <button class="btn btn-primary pull-right btn-large">
+                    Remove all
+                </button>
+            </form>
+        </div>
+    </footer>
+    <script src="../static/plugins/viewer/viewer.js"></script>
+    <script src="../static/scripts/winners.js"></script>
 </body>
 </html>

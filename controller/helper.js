@@ -8,10 +8,9 @@ const ipcMain = electron.ipcMain;
 const DATA_VALID_LENGTH = 6;
 const lodash = require("lodash");
 const menu = electron.Menu;
+const BrowserWindow = electron.BrowserWindow;
 
 app.allowRendererProcessReuse = false;
-
-
 
 
 exports.home = function(browser_window) {
@@ -100,12 +99,16 @@ exports.home = function(browser_window) {
 
                 },
                 {
-                    label : "Play and Draw",
-                    click : () => exports.playground(browser_window)
-                },
-                {
                     label : "List of Winners",
                     click : () => exports.winners(browser_window)
+                },
+                {
+                    label: "List of Prizes",
+                    click: function () {
+
+                        browser_window.loadURL("http://localhost:2222/prizes");
+
+                    }
                 },
             ]
         },
@@ -176,3 +179,20 @@ exports.winners = function (browser_window)
     });
 
 }
+
+
+ipcMain.on("play_and_draw", function (args, params) {
+
+    global.params = {
+        "Test" : "Test"
+    };
+
+    BrowserWindow
+        .getFocusedWindow()
+        .loadURL(url.format({
+            pathname: path.join(app.getAppPath(), 'view/draw.html'),
+            protocol: 'file',
+            slashes: true
+        }));
+
+});

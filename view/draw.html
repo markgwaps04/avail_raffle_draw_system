@@ -1,17 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>LUCKY DRAW</title>
-    <link rel="stylesheet" href="../static/eadmin/starbust.css">
-    <link rel="stylesheet" href="../static/eadmin/style.css">
-    <link rel="stylesheet" href="../static/plugins/vex-js/css/vex.css">
-    <link rel="stylesheet" href="../static/plugins/vex-js/css/vex-theme-os.css">
+    <link rel="stylesheet" href="eadmin/starbust.css">
+    <link rel="stylesheet" href="eadmin/style.css">
+    <link rel="stylesheet" href="plugins/vex-js/css/vex.css">
+    <link rel="stylesheet" href="plugins/vex-js/css/vex-theme-os.css">
 </head>
 
 <style>
-    .client_name
-    {
+    .client_name {
         z-index: 0;
         color: white;
         font-size: 60px;
@@ -23,8 +22,7 @@
         word-break: break-word;
     }
 
-    .ready
-    {
+    .ready {
         z-index: 0;
         color: white;
         font-size: 70px;
@@ -37,8 +35,7 @@
         word-break: break-word;
     }
 
-    #container-draw
-    {
+    #container-draw {
         width: 100%;
         height: 600px;
         /* background-color: blue; */
@@ -51,10 +48,10 @@
         max-width: 100%;
         max-height: 100%;
         overflow: auto;
-        padding-top: 128px;
+        padding-top: 58px;
     }
-    .ticket
-    {
+
+    .ticket {
         font-size: 38px;
         -webkit-text-stroke: 2px #7a14a5;
         TEXT-ALIGN: center;
@@ -103,27 +100,25 @@
         transition-delay: 1s;
     }
 
-    body{
+    body {
         overflow: hidden;
         /*background-image : url("../static/images/bg2.jpg");*/
         /*background-repeat: no-repeat;*/
         /*background-size: cover;*/
         /*background-origin: padding-box;*/
     }
-    .avail_logo img
-    {
+
+    .avail_logo img {
         z-index: 99;
     }
 
-    .hide
-    {
+    .hide {
         display: none;
     }
 
 
 
-    #container-winner
-    {
+    #container-winner {
         background: white;
         width: 100%;
         height: 100%;
@@ -137,22 +132,21 @@
         max-width: 100%;
         max-height: 100%;
         overflow: auto;
-        background-image : url("../static/images/bg2.jpg");
+        background-image: url("images/bg2.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-origin: padding-box;
         font-family: "Oswald";
     }
 
-    .wrapper
-    {
+    .wrapper {
         width: 104vh;
         height: auto;
         /* background-color: blue; */
-        position: absolute;
+        position: fixed;
         left: 0;
         right: 0;
-        top: 261px;
+        top: 32vh;
         bottom: 0;
         margin: auto;
         max-width: 100%;
@@ -162,132 +156,179 @@
         text-transform: capitalize;
     }
 
-    .wrapper .title
-    {
-        color: #903500;
-        letter-spacing: 2px;
-        font-size: 52px;
-        margin: 0;
+        .wrapper .title {
+            color: #903500;
+            letter-spacing: 2px;
+            font-size: 46px;
+            margin: 0;
+        }
+
+        .wrapper .ticket_winner {
+            margin: 0;
+            color: #903500;
+            font-size: 32px;
+        }
+
+        .wrapper .footer {
+            position: absolute;
+            bottom: 0;
+            padding: 26px;
+            width: 100%;
+            font-size: 20px;
+        }
+
+            .wrapper .footer .from_company {
+                color: #903500;
+                text-align: center;
+            }
+
+                .wrapper .footer .from_company img {
+                    width: 136px;
+                }
+
+
+    .select-wrapper {
+        position: relative;
+        width: 350px;
     }
 
-    .wrapper .ticket_winner
-    {
-        margin: 0;
-        color: #903500;
-        font-size: 35px;
-    }
+        .select-wrapper::after {
+            color: black;
+            content: '▾';
+            margin-right: 10px;
+            pointer-events: none;
+            position: absolute;
+            right: 10px;
+            top: 7px;
+            font-size: 20px;
+        }
 
-    .wrapper .footer
-    {
-        position: absolute;
-        bottom: 0;
-        padding: 26px;
+    .select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        background: white;
+        border: none;
+        border-radius: 0;
+        cursor: pointer;
+        padding: 12px;
         width: 100%;
-        font-size: 20px;
+        font-size: 18px;
     }
 
-    .wrapper .footer .from_company
-    {
-        color: #903500;
+        .select:focus {
+            color: black;
+        }
+
+        .select::-ms-expand {
+            display: none;
+        }
+
+    .prize_desc {
         text-align: center;
+        font-size: 37px;
+        -webkit-text-stroke: 1px #ff6a00;
+        font-family: 'Luckiest Guy';
+        margin: 20px 100px;
+        letter-spacing: -1px;
+        word-break: break-all;
     }
 
-    .wrapper .footer .from_company img
-    {
-        width: 136px;
+    .won_prize {
+        font-size: 23px;
+        color: #6f6969;
+        text-transform : none;
     }
-
-
 
 </style>
 
 <body class="draw">
 
 
-
-<div class="avail_logo">
-    <img src="../static/images/avail_logo.png">
-</div>
-
-
-<!--<div class="play_gift">-->
-<!--    <img src="../static/images/play_gift.png">-->
-<!--</div>-->
-
-
-<ul class="starbust-wheel">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</ul>
-
-
-<div id="container-draw" class="">
-
-    <p class="ready">
-        Ready...
-    </p>
-
-    <div class="draw" style="display: none">
-        <p class="client_name"></p>
-        <p class="ticket">Ticket No. <span id="ticket_no"></span></p>
+    <div class="avail_logo">
+        <img src="images/avail_logo.png">
     </div>
 
 
-</div>
+    <!--<div class="play_gift">-->
+    <!--    <img src="../static/images/play_gift.png">-->
+    <!--</div>-->
 
-<div id="container-winner" class="hide">
 
-    <div class="wrapper">
+    <ul class="starbust-wheel">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 
-        <h3 class="title"></h3>
-        <h5 class="ticket_winner">TICKET NO. <label></label></h5>
 
-        <div class="footer">
+    <div id="container-draw" class="">
 
-            <h5 class="from_company">From <img src="../static/images/avail_logo2.png"/> </h5>
+        <p class="ready">
+            Ready...
+        </p>
+
+        <div class="draw" style="display: none">
+            <p class="prize_desc">Draw for "<%= prize_desc.name %>" winner</p>
+            <br />
+            <br />
+            <p class="client_name"></p>
+            <p class="ticket">Ticket No. <span id="ticket_no"></span></p>
+        </div>
+
+
+    </div>
+
+    <div id="container-winner" class="hide">
+
+        <div class="wrapper">
+
+            <h3 class="title"></h3>
+            <h5 class="ticket_winner">TICKET NO. <label></label></h5>
+            <br />
+            <h5 class="won_prize">For winning "<%= prize_desc.name %>" <label></label></h5>
+            <div class="footer">
+
+                <h5 class="from_company">From <img src="images/avail_logo2.png" /></h5>
+
+            </div>
 
         </div>
 
+
     </div>
 
+    <span class="overlay color color--blue" data-value="1"></span>
+    <span class="overlay color color--orange" data-value="1"></span>
+    <span class="overlay color color--green" data-value="1"></span>
+    <div class="overlay color color--purple last" data-value="1">
+    </div>
 
-</div>
+    <script type="text/javascript" src="plugins/jquery.js"></script>
+    <script type="text/javascript" src="scripts/dialogs.js"></script>
+    <script type="text/javascript">
 
-<span class="overlay color color--blue" data-value="1"></span>
-<span class="overlay color color--orange" data-value="1"></span>
-<span class="overlay color color--green" data-value="1"></span>
-<div class="overlay color color--purple last" data-value="1">
-</div>
+        window.prize_name = "<%= prize_desc.name %>"
 
+    </script>
 
-
-<script>
-    require("../static/plugins/jquery.js")
-    require("../static/scripts/dialogs.js")
-    // require("../static/plugins/konva/konva.js");
-    // require("../static/scripts/wheel_of_fortune.js");
-    require("../static/scripts/draw1.js");
-
-</script>
-
+    <script type="text/javascript" src="scripts/draw1.js"></script>
 
 </body>
 </html>

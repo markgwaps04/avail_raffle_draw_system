@@ -57,3 +57,23 @@ exports
     });
 
 
+
+exports
+    .database
+    .schema
+    .hasTable('prizes')
+    .then(function (exists) {
+
+        if (!exists) {
+
+            return exports
+                .database
+                .schema
+                .createTable('prizes', function (t) {
+                    t.increments('id').primary();
+                    t.string('name', 100).notNullable()
+                });
+        }
+    });
+
+

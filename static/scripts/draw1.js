@@ -1,10 +1,18 @@
 const jQuery = require("jquery");
-const electron = require("electron").remote;
-const app = electron.app;
-const lodash = require("lodash");
+const BrowserWindow = remote.BrowserWindow;
 const process = require("process");
 const confetti = require("canvas-confetti");
-const sweetAlert = require('sweetalert2');
+var varsFromMainScript = remote.getGlobal('params');
+const path = require("path");
+const url = require("url");
+const html2canvas = require("html2canvas");
+
+
+
+if (!window.prize_name) {
+    alert('Error occured');
+    throw new Error("Something went badly wrong!");
+}
 
 
 var database = require('knex')({
@@ -14,7 +22,7 @@ var database = require('knex')({
     },
     useNullAsDefault: true,
     connectTimeout: 90000
-});
+})
 
 
 function setDeceleratingTimeout(callback, factor, times) {
@@ -36,9 +44,6 @@ function setDeceleratingTimeout(callback, factor, times) {
 
     window.setTimeout(internalCallback, factor);
 };
-
-
-
 
 
 
@@ -108,155 +113,239 @@ jQuery('document').ready(function() {
 
         }
 
-        setDeceleratingTimeout(function(is_last) {
+        const draw_random = function(callback)
+        {
+            let i = 0;
+            limit = [65,70,80,85];
+            const random = Math.floor(Math.random() * limit.length);
+            const pick_limit = limit[random];
 
-            return new Promise(function (resolve) {
+            const func = function() {
 
-                const winner = pick_winner();
-                winner.then(function (result) {
+                const decelaring_timeout_value = Math.abs(pick_limit - i);
+                let duration = 150;
+                duration+=10;
+                //if(decelaring_timeout_value <= 3) duration = 1000;
 
-                    //stop picking
-                    if(result.length <= 0)
-                    {
-                        Toast.fire({
-                            icon: 'warning',
-                            title: "No entries to draw"
-                        });
+                return setTimeout(function() {
+                    if(i >= pick_limit) return callback(func, true, i);
+                    i+=1;
+                    callback(func, false, i);
+                },duration);
 
-                        return true;
-                    }
+            };
 
-                    jQuery(".ready").hide();
-                    jQuery(".draw").show();
+            func();
 
-                    var audio = new Audio( '../static/sounds/draw.mp3');
-                    audio.play();
 
-                    const pick_one = result[0];
-                    jQuery(".client_name").text(pick_one.name)
-                    jQuery("#ticket_no").text(pick_one.ticket);
+        }
 
-                    if(!is_last) return false;
+        const entries = database("entries")
+                    .select(['ticket','name',"id"])
+                    .whereNotIn('row_no', winners_row_id)
+                    .distinct(['ticket'])
+                    .orderByRaw('random()');
 
-                    const to_insert_winner = database('winners').insert({
-                        winner_id: pick_one.id
+        entries.then(function (entries_list) {
+
+            if(entries_list.length <= 0)
+            {
+                Toast.fire({
+                    icon: 'warning',
+                    title: "No entries to draw"
+                });
+
+                return true;
+            }
+
+            jQuery(".ready").hide();
+            jQuery(".draw").show();
+
+            draw_random(function(func, is_winner, num) {
+
+                const random = Math.floor(Math.random() * entries_list.length);
+                const pick_pre_winner = entries_list[random];
+
+                var audio = new Audio( 'sounds/draw.mp3');
+                audio.play();
+
+                const pick_one = pick_pre_winner;
+                jQuery(".client_name").text(pick_one.name)
+                jQuery("#ticket_no").text(pick_one.ticket);
+
+                if (!is_winner) return func();
+
+                const to_insert_winner = database('winners')
+                    .returning('id')
+                    .insert({
+                        winner_id: pick_one.id,
+                        prize: window.prize_name
                     });
 
-                    to_insert_winner.then(function () {
 
-                        jQuery(".wrapper .title").text(pick_one.name);
-                        jQuery(".wrapper .ticket_winner label").text(pick_one.ticket);
+                to_insert_winner.then(function (insert_res) {
 
-                        setTimeout(function () {
 
-                            jQuery(".overlay").animate({
-                                "width" : "100%",
-                                "padding" : "100%",
-                                "height" : "auto"
-                            },{
-                                duration: 1000,
-                                done : function (event){
+                   jQuery(".wrapper .title").text(pick_one.name);
+                   jQuery(".wrapper .ticket_winner label").text(pick_one.ticket);
 
-                                    const element = jQuery(event.elem);
-                                    if(!element.is(".last")) return;
 
-                                    jQuery(".starbust-wheel").css({
-                                        "z-index" : "1"
+                    setTimeout(function () {
+
+                        const update_img = function () {
+
+                            const winner_container = document
+                                .querySelector("#container-winner");
+
+                            winner_container.classList.remove("hide");
+
+                            html2canvas(winner_container).then(canvas => {
+
+                                console.log(canvas);
+                                window.test1 = canvas;
+
+                                var fs = require('fs');
+                                const path_img = remote
+                                    .process
+                                    .cwd() + `/winners_img_src/${insert_res}.jpg`;
+
+                                const url = canvas.toDataURL('image/jpg');
+
+                                // remove Base64 stuff from the Image
+                                const base64Data = url.replace(/^data:image\/png;base64,/, "");
+                                fs.writeFile(path_img, base64Data, 'base64', function (err) {
+                                    if (!err) return;
+                                    console.log(err);
+                                    alert('Error occured during saving the screenshot of the winner');
+                                });
+                                   
+
+                            });
+
+                        }
+
+                       jQuery(".overlay").animate({
+                           "width" : "100%",
+                           "padding" : "100%",
+                           "height" : "auto"
+                       },{
+                           duration: 1000,
+                           done : function (event){
+
+                                const element = jQuery(event.elem);
+                                if(!element.is(".last")) return;
+
+                                jQuery(".starbust-wheel").css({
+                                     "z-index" : "1"
+                                });
+
+                                jQuery(".starbust-wheel li").css({
+                                     "background-image" : "linear-gradient(-197deg, rgba(255, 255, 255, 87.5) 5%, transparent 100%);"
+                                });
+
+                                var count = 200;
+                                var defaults = {
+                                      origin: { y: 0.7 }
+                                };
+
+                                function fire(particleRatio, opts) {
+                                    return confetti(Object.assign({}, defaults, opts, {
+                                         particleCount: Math.floor(count * particleRatio)
+                                    }));
+                                }
+
+                                const a = fire(0.25, {
+                                     spread: 26,
+                                     startVelocity: 55,
+                                });
+
+                                fire(0.2, {
+                                    spread: 60,
+                                });
+
+                                fire(0.35, {
+                                    spread: 100,
+                                    decay: 0.91,
+                                    scalar: 0.8
+                                });
+
+                                fire(0.1, {
+                                    spread: 120,
+                                    startVelocity: 25,
+                                    decay: 0.92,
+                                    scalar: 1.2
+                                });
+
+                                fire(0.1, {
+                                     spread: 120,
+                                     startVelocity: 45,
+                                });
+
+                                setTimeout(function () {
+
+                                    var audio = new Audio( 'sounds/winner.mp3');
+                                    audio.play();
+
+                                    jQuery("#container-winner")
+                                         .removeClass("hide")
+                                         .css({"z-index" : 2});
+
+                                    var end = Date.now() + (3 * 1000);
+
+
+                                    var colors = ['#bb0000', '#ffffff'];
+
+                                    (function frame() {
+                                         confetti({
+                                         particleCount: 2,
+                                         angle: 60,
+                                         spread: 55,
+                                         origin: { x: 0 },
+                                         colors: colors
                                     });
 
-                                    jQuery(".starbust-wheel li").css({
-                                        "background-image" : "linear-gradient(-197deg, rgba(255, 255, 255, 87.5) 5%, transparent 100%);"
-                                    });
+                                    confetti({
+                                         particleCount: 2,
+                                         angle: 120,
+                                         spread: 55,
+                                         origin: { x: 1 },
+                                         colors: colors
+                                     });
 
-                                    var count = 200;
-                                    var defaults = {
-                                        origin: { y: 0.7 }
-                                    };
+                                     if (Date.now() < end) {
+                                          requestAnimationFrame(frame);
+                                     }
+                                    }());
 
-                                    function fire(particleRatio, opts) {
-                                        return confetti(Object.assign({}, defaults, opts, {
-                                            particleCount: Math.floor(count * particleRatio)
-                                        }));
-                                    }
-
-                                    const a = fire(0.25, {
-                                        spread: 26,
-                                        startVelocity: 55,
-                                    });
-
-                                    fire(0.2, {
-                                        spread: 60,
-                                    });
-                                    fire(0.35, {
-                                        spread: 100,
-                                        decay: 0.91,
-                                        scalar: 0.8
-                                    });
-                                    fire(0.1, {
-                                        spread: 120,
-                                        startVelocity: 25,
-                                        decay: 0.92,
-                                        scalar: 1.2
-                                    });
-                                    fire(0.1, {
-                                        spread: 120,
-                                        startVelocity: 45,
-                                    });
-
-                                    setTimeout(function () {
-
-                                        var audio = new Audio( '../static/sounds/winner.mp3');
-                                        audio.play();
-
-                                        jQuery("#container-winner")
-                                            .removeClass("hide")
-                                            .css({"z-index" : 2});
-
-                                        var end = Date.now() + (3 * 1000);
+                                    update_img();
 
 
-                                        var colors = ['#bb0000', '#ffffff'];
-
-                                        (function frame() {
-                                            confetti({
-                                                particleCount: 2,
-                                                angle: 60,
-                                                spread: 55,
-                                                origin: { x: 0 },
-                                                colors: colors
-                                            });
-                                            confetti({
-                                                particleCount: 2,
-                                                angle: 120,
-                                                spread: 55,
-                                                origin: { x: 1 },
-                                                colors: colors
-                                            });
-
-                                            if (Date.now() < end) {
-                                                requestAnimationFrame(frame);
-                                            }
-                                        }());
-
-
-                                    }, 1000);
+                                }, 1000);
 
 
                                 }
-                            });
+                       });
 
-                            return;
 
-                        },2000);
+                     
+
+
+                      return;
+
+                   }, 2000);
+
+
 
                     });
 
 
-                });
 
             });
 
-        }, 20, 40);
+
+        })
+
+
 
 
     });
