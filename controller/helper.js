@@ -15,184 +15,176 @@ app.allowRendererProcessReuse = false;
 
 exports.home = function(browser_window) {
 
-    browser_window.loadURL(url.format({
-        pathname: path.join(app.getAppPath(), 'view/index.html'),
-        protocol : 'file',
-        slashes : true
-    }));
+  browser_window.loadURL(url.format({
+    pathname: path.join(app.getAppPath(), 'view/index.html'),
+    protocol: 'file',
+    slashes: true
+  }));
 
-    browser_window.on('closed', () => {
-        browser_window = null;
-    });
+  browser_window.on('closed', () => {
+    browser_window = null;
+  });
 
-    const template = [
-        {
-            label : "File",
-            "submenu" : [
-                {
-                    label : "Import",
-                    click : function() {
+  const template = [{
+      label: "File",
+      "submenu": [{
+          label: "Import",
+          click: function() {
 
-                        browser_window.webContents.send('import');
+            browser_window.webContents.send('import');
 
-                        //exports.dialog(browser_window);
+            //exports.dialog(browser_window);
 
-                    }
-                },
+          }
+        },
 
 
-            ]
+      ]
+    },
+    {
+      label: "View",
+      id: 'menu_view',
+      "submenu": [{
+          label: "Full screen (F5)",
+          accelerator: 'F5',
+          id: 'menu_full_screen',
+          click: function() {
+            const of_exit_full_screen = menu_template
+              .getMenuItemById('menu_exit_fullscreen');
+
+            const of_full_screen = menu_template
+              .getMenuItemById('menu_full_screen');
+
+            of_full_screen.enabled = false;
+            of_exit_full_screen.enabled = true;
+            browser_window.setFullScreen(true)
+
+          }
         },
         {
-            label : "View",
-            id: 'menu_view',
-            "submenu" : [
-                {
-                    label : "Full screen (F5)",
-                    id: 'menu_full_screen',
-                    click : function ()
-                    {
-                        const of_full_screen = menu_template
-                            .getMenuItemById('menu_full_screen');
+          label: "Exit Full screen (F5)",
+          enabled: false,
+          accelerator: 'Esc',
+          id: 'menu_exit_fullscreen',
+          click: function() {
 
-                        of_full_screen.enabled = false;
+            const of_exit_full_screen = menu_template
+              .getMenuItemById('menu_exit_fullscreen');
 
-                        const of_menu_view = menu_template
-                            .getMenuItemById('menu_exit_fullscreen');
+            of_exit_full_screen.enabled = false;
 
-                        of_menu_view.enabled = true;
+            const of_full_screen = menu_template
+              .getMenuItemById('menu_full_screen');
 
-                        browser_window.setFullScreen(true)
-                    }
-                },
-                {
-                    label : "Exit Full screen (F5)",
-                    enabled : false,
-                    id: 'menu_exit_fullscreen',
-                    click : function ()
-                    {
-                        const of_exit_full_screen = menu_template
-                            .getMenuItemById('menu_exit_fullscreen');
+            of_full_screen.enabled = true;
 
-                        of_exit_full_screen.enabled = false;
-
-                        const of_full_screen = menu_template
-                            .getMenuItemById('menu_full_screen');
-
-                        of_full_screen.enabled = true;
-
-                        browser_window.setFullScreen(false)
-                    }
-                },
+            browser_window.setFullScreen(false)
+          }
+        },
 
 
-            ]
+      ]
+    },
+    {
+      label: "Pages",
+      "submenu": [{
+          label: "Home",
+          click: function() {
+            exports.home(browser_window);
+          },
+
         },
         {
-            label : "Pages",
-            "submenu" : [
-                {
-                    label : "Home",
-                    click : function () {
-                        exports.home(browser_window);
-                    },
-
-                },
-                {
-                    label : "List of Winners",
-                    click : () => exports.winners(browser_window)
-                },
-                {
-                    label: "List of Prizes",
-                    click: function () {
-
-                        browser_window.loadURL("http://localhost:2222/prizes");
-
-                    }
-                },
-            ]
+          label: "List of Winners",
+          click: () => exports.winners(browser_window)
         },
         {
-            label : "Help",
-            "submenu" : [
-                {
-                    label : "About",
-                    click : function () {
-                        console.log("click submenu 1");
-                    }
-                },
-            ]
+          label: "List of Prizes",
+          click: function() {
+
+            browser_window.loadURL("http://localhost:2222/prizes");
+
+          }
+        },
+      ]
+    },
+    {
+      label: "Help",
+      "submenu": [{
+        label: "About",
+        click: function() {
+          console.log("click submenu 1");
         }
-    ]
+      }, ]
+    }
+  ]
 
-    const menu_template = menu.buildFromTemplate(template);
-    menu.setApplicationMenu(menu_template);
+  const menu_template = menu.buildFromTemplate(template);
+  menu.setApplicationMenu(menu_template);
 
-    // browser_window.webContents.openDevTools();
+  // browser_window.webContents.openDevTools();
 
-    return browser_window;
-
-}
-
-exports.import_loading_screen = function (browser_window) {
-    browser_window.loadFile(path.join(app.getAppPath(), '/view/import/loading_screen.html'));
-    const template = [
-        {
-            label : "Help",
-            "submenu" : [
-                {
-                    label : "About",
-                    click : function () {
-                        console.log("click submenu 1");
-                    }
-                },
-            ]
-        }
-    ]
-
-    const menu_template = menu.buildFromTemplate(template);
-    menu.setApplicationMenu(menu_template);
+  return browser_window;
 
 }
 
-exports.playground = function (browser_window) {
+exports.import_loading_screen = function(browser_window) {
+  browser_window.loadFile(path.join(app.getAppPath(), '/view/import/loading_screen.html'));
+  const template = [{
+    label: "Help",
+    "submenu": [{
+      label: "About",
+      click: function() {
+        console.log("click submenu 1");
+      }
+    }, ]
+  }]
 
-    data = {"age": 12, "healthy": true}
-    browser_window.loadURL(url.format({
-        pathname: path.join(app.getAppPath(), 'view/draw.html'),
-        protocol : 'file',
-        slashes : true
+  const menu_template = menu.buildFromTemplate(template);
+  menu.setApplicationMenu(menu_template);
+
+}
+
+exports.playground = function(browser_window) {
+
+  data = {
+    "age": 12,
+    "healthy": true
+  }
+  browser_window.loadURL(url.format({
+    pathname: path.join(app.getAppPath(), 'view/draw.html'),
+    protocol: 'file',
+    slashes: true
+  }));
+
+}
+
+exports.winners = function(browser_window) {
+  browser_window.loadURL(url.format({
+    pathname: path.join(app.getAppPath(), 'view/winners.html'),
+    protocol: 'file',
+    slashes: true
+  }));
+
+  browser_window.on('closed', () => {
+    browser_window = null;
+  });
+
+}
+
+
+ipcMain.on("play_and_draw", function(args, params) {
+
+  global.params = {
+    "Test": "Test"
+  };
+
+  BrowserWindow
+    .getFocusedWindow()
+    .loadURL(url.format({
+      pathname: path.join(app.getAppPath(), 'view/draw.html'),
+      protocol: 'file',
+      slashes: true
     }));
-
-}
-
-exports.winners = function (browser_window)
-{
-    browser_window.loadURL(url.format({
-        pathname: path.join(app.getAppPath(), 'view/winners.html'),
-        protocol : 'file',
-        slashes : true
-    }));
-
-    browser_window.on('closed', () => {
-        browser_window = null;
-    });
-
-}
-
-
-ipcMain.on("play_and_draw", function (args, params) {
-
-    global.params = {
-        "Test" : "Test"
-    };
-
-    BrowserWindow
-        .getFocusedWindow()
-        .loadURL(url.format({
-            pathname: path.join(app.getAppPath(), 'view/draw.html'),
-            protocol: 'file',
-            slashes: true
-        }));
 
 });

@@ -65,7 +65,7 @@
 
     jQuery("#import_new_data").click(function () {
 
-        const DATA_VALID_LENGTH = 7;
+        const DATA_VALID_LENGTH = 4;
 
         const data_formatter = function (data) {
 
@@ -79,15 +79,25 @@
                     return;
                 }
 
+                // const data_property = {
+                //     row_no: per[0],
+                //     bonus_type: per[1],
+                //     agent_code: per[2],
+                //     name: per[3],
+                //     contact_number: per[4],
+                //     tickets_count: Number(per[5]) || 0,
+                //     tickets: String(per[6]).split(";")
+                // }
+
                 const data_property = {
                     row_no: per[0],
-                    bonus_type: per[1],
-                    agent_code: per[2],
-                    name: per[3],
-                    contact_number: per[4],
-                    tickets_count: Number(per[5]) || 0,
-                    tickets: String(per[6]).split(";")
+                    agent_code: per[1],
+                    name: per[2],
+                    tickets_count: String(per[3]).split(";").length,
+                    tickets: String(per[3]).split(";")
                 }
+
+                console.log(data_property);
 
                 const is_valid_row = !isNaN(data_property.row_no);
 
@@ -99,18 +109,16 @@
                 }
 
 
-
                 data_property.tickets.forEach(function (ticket_no) {
+
 
                     if (String(ticket_no).trim().length == 0) return;
                     if (!data_property.agent_code) return;
-                    if (!data_property.bonus_type) return;
                     if (!data_property.name) return;
 
                     const cleaned_property = {
                         agent_code: data_property.agent_code,
                         name: data_property.name,
-                        bonus_type: data_property.bonus_type,
                         ticket: ticket_no,
                         row_no: data_property.row_no
                     };
@@ -190,6 +198,7 @@
                                 readXlsxFile(read_stream, { sheet: (index + 1) }).then(function (rows) {
 
                                     const that_data = data_formatter(rows);
+                                    console.log(that_data);
 
                                     Toast("info", `<red>${that_data.full.length}&nbsp;</red> data has been scanned and ready to saved! `);
 
@@ -241,11 +250,11 @@
                         }
                     });
 
-        
+
 
                 });
 
-                
+
 
             });
 

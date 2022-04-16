@@ -26,7 +26,6 @@ exports
                 .createTable('entries', function(t) {
                     t.increments('id').primary();
                     t.integer('row_no').notNullable();
-                    t.string('bonus_type', 100).notNullable();
                     t.string('agent_code',100).notNullable();
                     t.string('name',100).notNullable();
                     t.string('ticket',100)
@@ -52,6 +51,7 @@ exports
                     t.integer('winner_id',100)
                         .unique()
                         .notNullable()
+                    t.integer('prize',100).notNullable()
                 });
         }
     });
@@ -75,5 +75,3 @@ exports
                 });
         }
     });
-
-

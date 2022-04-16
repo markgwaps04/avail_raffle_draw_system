@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Ayuscript Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ayuscript Regular'), url('../fonts/ayuscript/Ayuscript.woff') format('woff');
+}
+
+
 /* luckiest-guy-regular - latin */
 @font-face {
     font-family: 'Luckiest Guy';
@@ -66,7 +74,7 @@
 }
 
 body {
-    background: radial-gradient(circle farthest-side, rgb(165, 102, 172), rgb(130, 83, 163)); 
+    background: radial-gradient(circle farthest-side, rgba(13,185,247,255), rgba(2,73,227,255));
     color: white;
     font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
     /**background-image : url("../images/bg22.jpg");
@@ -177,6 +185,15 @@ ul.navbar {
     right: 45px;
 }
 
+.title_logo img
+{
+    width: 15%;
+    position: fixed;
+    top: 16px;
+    /*right : 14px*/
+    left: 45px;
+}
+
 red
 {
     color: red;
@@ -266,4 +283,3 @@ red
 /*    left: -1.3411%;*/
 /*    top: -89.72%;*/
 /*}*/
-

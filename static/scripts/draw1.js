@@ -6,6 +6,7 @@ var varsFromMainScript = remote.getGlobal('params');
 const path = require("path");
 const url = require("url");
 const html2canvas = require("html2canvas");
+const anime = require('animejs');
 
 
 
@@ -186,8 +187,21 @@ jQuery('document').ready(function() {
                 to_insert_winner.then(function (insert_res) {
 
 
-                   jQuery(".wrapper .title").text(pick_one.name);
-                   jQuery(".wrapper .ticket_winner label").text(pick_one.ticket);
+                   // jQuery(".wrapper .title").text(pick_one.name);
+                   jQuery(".ticket_winner").text(pick_one.name);
+                   // jQuery("#container-winner .congrats_text").css("text-align", "left");
+                   // jQuery("#container-winner .client_name").css({
+                   //   "text-align" : "left",
+                   //   "margin" : "20px 549px 2px 102px"
+                   // });
+                   // jQuery("#container-winner .ticket").css({
+                   //   "text-align" : "left",
+                   //   "margin" : "20px 99px"
+                   // });
+                   // jQuery(".starbust-wheel").css({
+                   //   "top" : "-56%",
+                   //   "left" : "321px"
+                   // });
 
 
                     setTimeout(function () {
@@ -218,7 +232,7 @@ jQuery('document').ready(function() {
                                     console.log(err);
                                     alert('Error occured during saving the screenshot of the winner');
                                 });
-                                   
+
 
                             });
 
@@ -243,6 +257,7 @@ jQuery('document').ready(function() {
                                      "background-image" : "linear-gradient(-197deg, rgba(255, 255, 255, 87.5) 5%, transparent 100%);"
                                 });
 
+                                var colors = ['#F3BC50', '#FFCB2E', '#FFBF00'];
                                 var count = 200;
                                 var defaults = {
                                       origin: { y: 0.7 }
@@ -250,13 +265,15 @@ jQuery('document').ready(function() {
 
                                 function fire(particleRatio, opts) {
                                     return confetti(Object.assign({}, defaults, opts, {
-                                         particleCount: Math.floor(count * particleRatio)
+                                         particleCount: Math.floor(count * particleRatio),
+                                         colors: colors
                                     }));
                                 }
 
                                 const a = fire(0.25, {
                                      spread: 26,
                                      startVelocity: 55,
+
                                 });
 
                                 fire(0.2, {
@@ -283,17 +300,43 @@ jQuery('document').ready(function() {
 
                                 setTimeout(function () {
 
+                                    jQuery(".title_logo img").css({
+                                      "width" : "20%",
+                                      "z-index" : 3
+                                    });
+                                    jQuery(".avail_logo img").css({
+                                      "width" : "15%",
+                                      "z-index" : 3
+                                    });
+
+                                    const textWrapper = document.querySelector('.ticket_winner');
+
+
+                                    textWrapper.innerHTML = textWrapper
+                                      .textContent
+                                      .replace(/\S/g, "<span class='letter'>$&</span>");
+
+                                    anime.timeline({
+                                      loop: true
+                                    })
+                                    .add({
+                                      targets: '.ticket_winner .letter',
+                                      rotateY: [-90, 0],
+                                      duration: 1300,
+                                      delay: (el, i) => 45 * i
+                                    }).add({
+                                      targets: '.ticket_winner',
+                                      opacity: 0,
+                                      duration: 1000,
+                                      easing: "easeOutExpo",
+                                      delay: 1000
+                                    });
+
                                     var audio = new Audio( 'sounds/winner.mp3');
                                     audio.play();
 
-                                    jQuery("#container-winner")
-                                         .removeClass("hide")
-                                         .css({"z-index" : 2});
+                                    var end = Date.now() + (3 * 9000);
 
-                                    var end = Date.now() + (3 * 1000);
-
-
-                                    var colors = ['#bb0000', '#ffffff'];
 
                                     (function frame() {
                                          confetti({
@@ -327,7 +370,7 @@ jQuery('document').ready(function() {
                        });
 
 
-                     
+
 
 
                       return;
@@ -353,5 +396,3 @@ jQuery('document').ready(function() {
 
 
 });
-
-
