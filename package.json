@@ -29,7 +29,7 @@
   },
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron ./",
     "rebuild": "electron-rebuild -f -w sqlite3",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
@@ -47,15 +47,16 @@
     "publish": [
       {
         "provider": "github",
-        "token": "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"
+        "token": "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"
       }
     ],
     "win": {
-      "asar": true,
+      "asar": false,
       "target": "nsis",
       "icon": "static/images/raffle_draw.ico"
     },
     "linux": {
+      "asar": false,
       "category": "Office",
       "target": [
         "AppImage",

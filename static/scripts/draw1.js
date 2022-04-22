@@ -206,37 +206,6 @@ jQuery('document').ready(function() {
 
                     setTimeout(function () {
 
-                        const update_img = function () {
-
-                            const winner_container = document
-                                .querySelector("#container-winner");
-
-                            winner_container.classList.remove("hide");
-
-                            html2canvas(winner_container).then(canvas => {
-
-                                console.log(canvas);
-                                window.test1 = canvas;
-
-                                var fs = require('fs');
-                                const path_img = remote
-                                    .process
-                                    .cwd() + `/winners_img_src/${insert_res}.jpg`;
-
-                                const url = canvas.toDataURL('image/jpg');
-
-                                // remove Base64 stuff from the Image
-                                const base64Data = url.replace(/^data:image\/png;base64,/, "");
-                                fs.writeFile(path_img, base64Data, 'base64', function (err) {
-                                    if (!err) return;
-                                    console.log(err);
-                                    alert('Error occured during saving the screenshot of the winner');
-                                });
-
-
-                            });
-
-                        }
 
                        jQuery(".overlay").animate({
                            "width" : "100%",
@@ -360,7 +329,11 @@ jQuery('document').ready(function() {
                                      }
                                     }());
 
-                                    update_img();
+
+                                    const winner_container = document
+                                        .querySelector("#container-winner");
+
+                                    winner_container.classList.remove("hide");
 
 
                                 }, 1000);

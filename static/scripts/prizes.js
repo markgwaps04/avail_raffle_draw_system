@@ -9,9 +9,8 @@
     const ipcClient = require("electron").ipcRenderer;;
     const electron = require("electron").remote;
     const app = electron.app;
-    const modelsJs = require("./static/scripts/models.js");
+    // const modelsJs = require("../static/scripts/models.js");
     const BrowserWindow = electron.BrowserWindow;
-    const database = modelsJs.database;
     const of_dialog = electron.dialog;
     const fs = require("fs");
     const lodash = require("lodash");
@@ -20,6 +19,15 @@
     vex.registerPlugin(require('vex-dialog'))
     vex.defaultOptions.className = 'vex-theme-os';
 
+
+    //
+    // const a = fs.readdirSync('../', {withFileTypes: true})
+    // // .filter(item => !item.isDirectory())
+    // .map(item => item.name);
+    //
+    // console.log(a);
+    // console.log(__dirname);
+    // debugger;
 
     jQuery(".remove").submit(function (e) {
 
@@ -45,16 +53,19 @@
         }).then((result) => {
             if (!result.isConfirmed) return;
 
-            const on_delete = database
-                .where('id', formObject.id)
-                .from("prizes")
-                .del();
+            const a = jQuery.ajax({
+              url : "/prizes",
+              method : 'delete',
+              data : formObject
+            });
 
-            on_delete.then(function () {
-
+            a.done(function() {
                 window.location.reload()
+            });
 
-            })
+            a.fail(function() {
+                alert('Error found, could not successfully deleted!');
+            });
 
 
         })
@@ -82,16 +93,23 @@
         }
 
 
-        const on_insert = database('prizes').insert({ name: formObject.item_name });
+        const a = jQuery.ajax({
+          url : "/prizes",
+          method : 'post',
+          data : formObject
+        });
 
-
-        on_insert.then(function () {
+        a.done(function() {
             window.location.reload()
-        })
+        });
+
+        a.fail(function() {
+            jQuery("#invalid_value").removeClass("hide");
+        });
 
 
 
-       
+
     });
 
 
@@ -109,13 +127,18 @@
         }).then((result) => {
             if (!result.isConfirmed) return;
 
-            const on_delete = database.from("prizes").del();
+            const a = jQuery.ajax({
+              url : "/prizes",
+              method : 'patch'
+            });
 
-            on_delete.then(function () {
+            a.done(function() {
+                window.location.reload()
+            });
 
-                window.location.reload();
-
-            })
+            a.fail(function() {
+                alert('Error found, could not successfully deleted!');
+            });
 
 
         })
@@ -124,7 +147,7 @@
 
     })
 
-    
+
 
 
 })((function () {
